@@ -8,6 +8,9 @@ from transformers import (
 )
 from langchain.llms import HuggingFacePipeline
 from config import HF_TOKEN, MODEL_NAME
+from huggingface_hub import login
+
+login(token=HF_TOKEN)
 
 def create_bnb_config():
     return BitsAndBytesConfig(
