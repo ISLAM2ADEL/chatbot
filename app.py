@@ -12,8 +12,10 @@ app = FastAPI()
 nest_asyncio.apply()
 
 # Initialize components
-llm = setup_qa_chain().llm
-retriever = setup_qa_chain().retriever
+qa_chain = setup_qa_chain()
+# Access the LLM through the chain structure
+llm = qa_chain.combine_documents_chain.llm_chain.llm
+retriever = qa_chain.retriever
 
 # Models
 class DoctorQuestion(BaseModel):
